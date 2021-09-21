@@ -1,10 +1,19 @@
-const eqArrays = function(actual, expected) {
-  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
-    return false;
-  } else {
-    return true;
+const eqArrays = function(actual,expected) {
+  if(actual.length !== expected.length) { //first check the number of elements
+    return false
   }
+  for (let i = 0; i < actual.length; i++) { //you can loop only through one array
+    if (Array.isArray(actual[i]) && Array.isArray(expected[i])) {
+      if (!eqArrays(array1[i],array2[i])) {
+        return false;
+      }
+    } else if (actual[i] !== expected[i]) { //the items are not equal
+      return false;
+    }
+  }
+  return true;
 };
+
 const assertArraysEqual = function(array1, array2) {
   if (eqArrays(array1, array2)) {
     console.log(`✅✅✅  Assertion Passed: ${array1} === ${array2}`);
@@ -25,6 +34,7 @@ const map = function(array, callback) {
   return results;
 };
 
+module.exports = map;
 
-const results1 = map(words, word => word[0]);
-console.log(assertArraysEqual((results1), [ 'g', 'c', 't', 'm', 't' ]));
+// const results1 = map(words, word => word[0]);
+// console.log(assertArraysEqual((results1), [ 'g', 'c', 't', 'm', 't' ]));

@@ -13,13 +13,17 @@ const bestTVShowsByGenre = {
 };
 
 const findKeyByValue  = (object,value) => {
-  for (const key in object) {
+  for (let key in object) {
     if (object[key] === value) {
       return key;
     }
   }
 };
 
-assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
-assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
+module.exports = findKeyByValue;
+
+
+//TEST CODE
+// assertEqual(findKeyByValue(bestTVShowsByGenre, "The Wire"), "drama");
+// assertEqual(findKeyByValue(bestTVShowsByGenre, "That '70s Show"), undefined);
 
